@@ -1,3 +1,7 @@
+; This code calculate some basic properties of a square waveguide using a dipole source.
+; It is initially modified from an example from http://isblokken.dk/wiki/doku.php/note/201210_3d_waveguide_model .
+; By Xiaodong Qi (i2000s@hotmail.com), 2016-11-28.
+
 ; Materials
 (define SiO2 (make dielectric (index 1.46)))
 (define Vac (make dielectric (index 1.0)))
