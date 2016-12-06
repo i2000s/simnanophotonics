@@ -2,6 +2,7 @@
 ; It is initially modified from an example from http://isblokken.dk/wiki/doku.php/note/201210_3d_waveguide_model .
 ; By Xiaodong Qi (i2000s@hotmail.com), 2016-11-28.
 
+(reset-meep)
 ; Materials
 (define SiO2 (make dielectric (index 1.46)))
 (define Vac (make dielectric (index 1.0)))
@@ -30,13 +31,20 @@
 
 
 ; Resolution
-(define-param res 20) ; resolution of computational cell
+(define-param res 50) ; resolution of computational cell
 
 ; Default material
 (set! default-material mcl)
 
 ; Run with sub-pixel averaging?
 (set! eps-averaging? false)
+
+; Use complex field.
+(set! force-complex-fields? true)
+
+; Set Curant factor S which relates the time step size to the spatial discretization: cΔt = SΔx. Default is 0.5. For numerical stability,
+; the Courant factor must be at most n_\textrm{min}/\sqrt{\textrm{\# dimensions}}, where nmin is the minimum refractive index (usually 1), and in practice S should be slightly smaller.
+(set! Courant 0.4)
 
 ; Calculation of parameters
 (define xsz (+ wwg (* 2 xpad) (* 2 tpml)) ) ; x-size of computational cell
@@ -68,16 +76,23 @@
 (set! sources
 		(list
             (make source
-		       		  (src (make continuous-src (wavelength lwavelength) (fwidth ldf) (end-time 200) ))
+		       		  (src (make gaussian-src (wavelength lwavelength) (fwidth ldf) ))
 					          (component Ex) (size 0 0 0) (center (+ (/ wwg 2) 0.2) 0 0)
 
 			      )
 		 )
 )
 
-(run-until 60
+; (run-sources+
+; (stop-when-fields-decayed 50 Ex
+(run-until 240
 	(at-beginning output-epsilon)
-	(at-every 10 output-efield-x)
-	(at-every 10 output-efield-y)
-	(at-every 10 output-efield-z)
+	(at-every 40 output-efield-x)
+	(at-every 40 output-efield-y)
+	(at-every 40 output-efield-z)
+	(to-appended "Ert"
+  		(at-every 0.2
+				(in-volume (volume (center (+ (/ wwg 2) 0.2) 0 0) (size 0 0 0)) output-efield-x)
+			 	(in-volume (volume (center (+ (/ wwg 2) 0.2) 0 0) (size 0 0 0)) output-efield-y)
+				(in-volume (volume (center (+ (/ wwg 2) 0.2) 0 0) (size 0 0 0)) output-efield-z)))
 )
