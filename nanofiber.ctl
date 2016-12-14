@@ -22,7 +22,8 @@
 
 ; Light
 (define-param lwavelength 0.895) ; light pulse center wavelength (frequency)
-(define-param ldf 2.0e-8)  ; light pulse width [in frequency]. Unit freq is 3e14 in Hz.
+(define-param ldf 0.02)  ; light pulse width [in frequency]. I set to 2e-8 before to reflect the real pulse width of an Cs atom, but this doesn't have to be so.
+												; Unit freq is 3e14 in Hz.
 
 ; Paddings and pmls
 (define-param tpml 1) ; thickness of PML
