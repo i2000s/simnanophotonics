@@ -21,7 +21,7 @@
 
 ; Light
 (define-param lwavelength 0.895) ; light pulse center wavelength (frequency)
-(define-param ldf 2.0e-8)  ; light pulse width [in frequency]. Unit freq is 3e14 in Hz.
+(define-param ldf 0.02)  ; light pulse width [in frequency]. Unit freq is 3e14 in Hz.
 
 ; Paddings and pmls
 (define-param tpml 1) ; thickness of PML
@@ -31,7 +31,7 @@
 
 
 ; Resolution
-(define-param res 50) ; resolution of computational cell
+(define-param res 30) ; resolution of computational cell
 
 ; Default material
 (set! default-material mcl)
