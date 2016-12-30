@@ -12,7 +12,7 @@
 (define-param mwg SiN) ; waveguide material
 (define-param wwg 0.3) ; waveguide width. Nanometer is the unit for length.
 (define-param hwg 0.3) ; waveguide height
-(define-param lwg 5) ; initial waveguide length
+(define-param lwg 2) ; initial waveguide length
 
 
 ; Cladding
@@ -24,14 +24,14 @@
 (define-param ldf 0.02)  ; light pulse width [in frequency]. Unit freq is 3e14 in Hz.
 
 ; Paddings and pmls
-(define-param tpml 1) ; thickness of PML
-(define-param xpad 2) ; thickness of x-padding
-(define-param ypad 2) ; thickness of y-padding
+(define-param tpml 0.8) ; thickness of PML
+(define-param xpad 1.5) ; thickness of x-padding
+(define-param ypad 1.5) ; thickness of y-padding
 (define-param zpad 0) ; thickness of z-padding
 
 
 ; Resolution
-(define-param res 30) ; resolution of computational cell
+(define-param res 100) ; resolution of computational cell
 
 ; Default material
 (set! default-material mcl)
@@ -61,7 +61,7 @@
 (set! geometry
 	(list
 		; Build WG and extend it thru PMLs and PADs
-		(make block (center 0 0 0) (size wwg hwg zsz) (material mwg))
+		(make block (center 0 0 0) (size wwg hwg infinity) (material mwg))
 	)
 )
 
