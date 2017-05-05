@@ -92,10 +92,10 @@
 ; (stop-when-fields-decayed 50 Ex
 (run-until 240
 	(at-beginning output-epsilon announce-source-time print-time-step-size)
-	(at-every 40 output-efield-x)
-	(at-every 40 output-efield-y)
-	(at-every 40 output-efield-z)
-	(to-appended "Ert"
+	;(at-every 40 output-efield-x)
+	;(at-every 40 output-efield-y)
+	;(at-every 40 output-efield-z)
+	(to-appended "Ert-ex"
   		(at-every dt
 				(in-volume (volume (center (+ (/ wwg 2) 0.2) 0 0) (size 0 0 0)) output-efield-x)
 			 	(in-volume (volume (center (+ (/ wwg 2) 0.2) 0 0) (size 0 0 0)) output-efield-y)
