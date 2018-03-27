@@ -9,6 +9,7 @@ Two major waveguides are considered for these demons:
 2. A square waveguide with a square cross-section
 
 ## List of major files:
+Note: I am not distinguishing capitalizations.
 
 ### 1. FDTD simulations with MEEP (computationally too costly for our subject)
 + vacuum.ctl: MEEP script for simulating a dipole radiation in vacuum for calibration purpose.
@@ -26,5 +27,8 @@ Two major waveguides are considered for these demons:
 + sqwg_BEM_D2.ipynb
 
 Data files follow a similar naming convention, and should be explicit following the notebooks on where they are utilized.
+
+## To cite this source:
++ Pleae fetch information from this DOI: [![DOI](https://zenodo.org/badge/75046845.svg)](https://zenodo.org/badge/latestdoi/75046845)
 
 ***Thanks to CQuIC.unm.edu and CARC.unm.edu for the high-performance cluster services, and Prof. Alejandro Manjavacas for the BEM supports.***
